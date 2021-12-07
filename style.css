@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    background: rgb(212, 212, 212);
+    font-family: sans-serif;
+    /* border: 1px solid black; */
+}
+
+#main-box {
+    width: 40%;
+    height: 40rem;
+    padding: 2rem;
+    margin: 2rem;
+    background-color: rgb(167, 166, 194);
+    display: flex;
+    flex-direction: column;
+    border: 4px solid rgb(69, 110, 121);
+    border-radius: 20px;
+}
+
+#display{
+    height: 20%;
+    margin-bottom: 3rem;
+    background-color: rgb(167, 166, 194);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+#display-field{
+    width: 95%;
+    height: 90%;
+    padding-right: 10px;
+    font-weight: 100;
+    font-size: 70px;
+    background-color: rgb(201, 201, 201);
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    align-items: flex-end;
+    border: 2px solid rgb(140, 144, 196);
+    border-radius: 20px;
+}
+
+#buttons {   
+    height: 100%;
+    background-color: rgb(167, 166, 194);
+    display: grid;
+    grid-template: repeat(4, 1fr)/repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.button {
+    width: 5rem;
+    height: 5rem;
+    font-size: 35px;
+    background-color: rgb(201, 201, 201);
+    border: 2px solid rgb(58, 114, 128);
+    border-radius: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* specific button styling */
+
+#button-c{
+    background-color: rgb(241, 113, 113);
+}
