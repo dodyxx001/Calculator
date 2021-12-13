@@ -7,7 +7,8 @@
 
 #main-box {
     width: 40%;
-    height: 40rem;
+    max-width: 450px;
+    height: 42rem;
     padding: 2rem;
     margin: 2rem;
     background-color: rgb(167, 166, 194);
@@ -17,9 +18,11 @@
     border-radius: 20px;
 }
 
+/* Display styling */
+
 #display{
     height: 20%;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     background-color: rgb(167, 166, 194);
     display: flex;
     justify-content: center;
@@ -41,6 +44,8 @@
     border: 2px solid rgb(140, 144, 196);
     border-radius: 20px;
 }
+
+/* Number and function buttons styling */
 
 #buttons {   
     height: 100%;
@@ -65,8 +70,38 @@
     
 }
 
-/* specific button styling */
+/* clear and back button styling */
+
+#clear-and-back-container{
+    display: flex;
+    background-color: rgb(167, 166, 194);
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.clear-and-back{
+    width: 7rem;
+    height: 3rem;
+    font-size: 30px;
+    margin: 10px;
+}
 
 #button-c{
     background-color: rgb(241, 113, 113);
+}
+
+#button-back{
+    background-color: rgb(230, 214, 127);
+}
+
+/* Hover over and tap all buttons styling */
+
+.button:hover{
+    background-color: rgb(144, 143, 184);
+    transform: scale(1.1);
+}
+
+.button:active{
+    background-color: rgb(144, 143, 184);
+    transform: scale(1.1);
 }

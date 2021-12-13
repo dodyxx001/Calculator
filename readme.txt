@@ -15,3 +15,8 @@ Version 1:
 - The hardest part to figure out was how to collect and save the data in variables,
   the switches as a solution I found out on my own.
 - We need the switches to disable event-listeners when we do not need them anymore.
+
+Version 2:
+- Added functionality to "back" and "clear" buttons
+- Added "dot" button for decimals
+- Upgraded the CSS a little bit, added animations to hovering over buttons
