@@ -106,10 +106,15 @@ body {
 
 /* Hover over and tap all buttons styling */
 
-.button:hover, .button:active {
+.button:hover {
     background-color: rgb(144, 143, 184);
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.pressedkey{
+    background-color: rgb(144, 143, 184);
+    transform: scale(1.1);
 }
 
 
@@ -129,6 +134,21 @@ body {
         display: flex;
         flex-direction: column;
         border: 4px solid rgb(69, 110, 121);
+        border-radius: 20px;
+    }
+
+    #display-field{
+        width: 95%;
+        height: 90%;
+        padding-right: 10px;
+        font-weight: 100;
+        font-size: 50px;
+        background-color: rgb(201, 201, 201);
+        display: flex;
+        justify-content: right;
+        text-align: right;
+        align-items: flex-end;
+        border: 2px solid rgb(109, 112, 161);
         border-radius: 20px;
     }
 
@@ -187,6 +207,21 @@ body {
         display: flex;
         flex-direction: column;
         border: 4px solid rgb(69, 110, 121);
+        border-radius: 20px;
+    }
+
+    #display-field{
+        width: 95%;
+        height: 90%;
+        padding-right: 10px;
+        font-weight: 100;
+        font-size: 50px;
+        background-color: rgb(201, 201, 201);
+        display: flex;
+        justify-content: right;
+        text-align: right;
+        align-items: flex-end;
+        border: 2px solid rgb(109, 112, 161);
         border-radius: 20px;
     }
 

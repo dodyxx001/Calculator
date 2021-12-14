@@ -28,3 +28,9 @@ Version 3:
 - Added CSS media queries for mobile portrait-orientation friendly interface
 - Fixed string to number converting
 - Version 3 took about 4 hours to complete
+
+Version 4:
+- Added keyboard support
+- Added additional styling for touch-events and for key-down events,
+  so the user can see what is going on
+- This version took about 3 hours to complete

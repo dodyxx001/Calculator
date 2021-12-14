@@ -98,6 +98,9 @@ function getInputs (e) {
 
 allButtons.forEach((btn) => {
     btn.addEventListener('click', getInputs);
+    btn.classList.add('pressedkey');  // Add styling
+        this.setTimeout(function() {
+            btn.classList.remove('pressedkey')}, 100);
 });
 
 // end of main function
@@ -193,4 +196,106 @@ document.querySelector('#button-c').addEventListener('click', () => {
     num2Switch = false;
     resultSwitch = false;
     dotButton.addEventListener('click', getInputs);
+});
+
+
+
+// Adding keyboard support
+
+let keyFunction = (e) => {
+
+    if (e.key === '1') {
+        document.getElementById('button1').click();  // Clicks the button, to invoke the main function
+        document.getElementById('button1').classList.add('pressedkey');  // Add styling
+        this.setTimeout(function() {document.getElementById('button1').classList.remove('pressedkey')}, 100);  // Remove styling
+    };
+    if (e.key === '2') {
+        document.getElementById('button2').click();
+        document.getElementById('button2').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button2').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '3') {
+        document.getElementById('button3').click();
+        document.getElementById('button3').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button3').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '4') {
+        document.getElementById('button4').click();
+        document.getElementById('button4').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button4').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '5') {
+        document.getElementById('button5').click();
+        document.getElementById('button5').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button5').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '6') {
+        document.getElementById('button6').click();
+        document.getElementById('button6').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button6').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '7') {
+        document.getElementById('button7').click();
+        document.getElementById('button7').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button7').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '8') {
+        document.getElementById('button8').click();
+        document.getElementById('button8').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button8').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '9') {
+        document.getElementById('button9').click();
+        document.getElementById('button9').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button9').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '0') {
+        document.getElementById('button0').click();
+        document.getElementById('button0').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button0').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '.') {
+        document.getElementById('button-dot').click();
+        document.getElementById('button-dot').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-dot').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === 'Enter') {
+        document.getElementById('button-equals').click();
+        document.getElementById('button-equals').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-equals').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === 'Backspace') {
+        document.getElementById('button-back').click();
+        document.getElementById('button-back').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-back').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === 'Escape') {
+        document.getElementById('button-c').click();
+        document.getElementById('button-c').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-c').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '+') {
+        document.getElementById('button-add').click();
+        document.getElementById('button-add').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-add').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '-') {
+        document.getElementById('button-subtract').click();
+        document.getElementById('button-subtract').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-subtract').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '/') {
+        document.getElementById('button-divise').click();
+        document.getElementById('button-divise').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-divise').classList.remove('pressedkey')}, 100);
+    };
+    if (e.key === '*') {
+        document.getElementById('button-multiply').click();
+        document.getElementById('button-multiply').classList.add('pressedkey');
+        this.setTimeout(function() {document.getElementById('button-multiply').classList.remove('pressedkey')}, 100);
+    };
+};
+
+document.addEventListener('keydown', (e) => {
+    keyFunction(e);
 });
