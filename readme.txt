@@ -20,3 +20,11 @@ Version 2:
 - Added functionality to "back" and "clear" buttons
 - Added "dot" button for decimals
 - Upgraded the CSS a little bit, added animations to hovering over buttons
+- Version 2 took about 3 hours to complete
+
+Version 3:
+- Added functionality to "dot" button in all steps
+- Limiting the number of decimal dots on the screen to 1
+- Added CSS media queries for mobile portrait-orientation friendly interface
+- Fixed string to number converting
+- Version 3 took about 4 hours to complete
