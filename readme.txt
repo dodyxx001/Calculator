@@ -34,3 +34,8 @@ Version 4:
 - Added additional styling for touch-events and for key-down events,
   so the user can see what is going on
 - This version took about 3 hours to complete
+
+Version 5:
+- Added upper row in the display, to show the history of calculations
+- Corrected CSS for touch-screens animations
+- This version took about 2 hours to complete

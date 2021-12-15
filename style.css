@@ -2,7 +2,7 @@
     box-sizing: border-box;
     background: rgb(212, 212, 212);
     font-family: sans-serif;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 
@@ -31,18 +31,36 @@ body {
 /* Display styling */
 
 #display{
-    height: 20%;
-    margin-bottom: 2rem;
+    height: 35%;  
     background-color: rgb(167, 166, 194);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
- 
+    border-radius: 20px;
+}
+
+#display-upper {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    text-align: right;
+    justify-content: right;
+    font-size: 25px;
+    font-weight: 100;
+    padding-right: 10px;
+    padding-top: 5px;
+    background-color: rgb(201, 201, 201);
+    border-top: 2px solid rgb(109, 112, 161);
+    border-left: 2px solid rgb(109, 112, 161);
+    border-right: 2px solid rgb(109, 112, 161);
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
 }
 
 #display-field{
-    width: 95%;
-    height: 90%;
+    width: 100%;
+    height: 70%;
     padding-right: 10px;
     font-weight: 100;
     font-size: 70px;
@@ -51,8 +69,11 @@ body {
     justify-content: right;
     text-align: right;
     align-items: flex-end;
-    border: 2px solid rgb(109, 112, 161);
-    border-radius: 20px;
+    border-bottom: 2px solid rgb(109, 112, 161);
+    border-left: 2px solid rgb(109, 112, 161);
+    border-right: 2px solid rgb(109, 112, 161);
+    border-top: none;
+    border-radius: 0 0 15px 15px;
 }
 
 /* Number and function buttons styling */

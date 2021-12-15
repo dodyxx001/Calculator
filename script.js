@@ -3,6 +3,7 @@ let functionButtons = document.querySelectorAll('.function');
 let allButtons = document.querySelectorAll('.button');
 let dotButton = document.querySelector('#button-dot')
 let displayField = document.querySelector('input');
+let history = document.querySelector('#display-upper');
 
 
 let num1 = 0;
@@ -40,6 +41,7 @@ function getInputs (e) {
             num1Switch = false;
             num2Switch = true;
             document.querySelector('input').value = '';                             // Reseting the display when users presses an operator
+            history.textContent = Number(num1) + ' ' + operator;
             dotButton.addEventListener('click', getInputs);                         // Enabling the dot button for the num2 (next step)
         };  
 
@@ -60,9 +62,10 @@ function getInputs (e) {
 
                     operate(num1, num2, operator);                                          // Calling the function, so we get the result
                     displayField.value = operate(num1, num2, operator);                     // Displaying the result
-                    num1 = displayField.value;                                              // This takes the result as the new num1
-                    num2 = 0;                                                               // This resets num2, so we can listen for a new one.
                     operator = e.target.textContent;
+                    history.textContent += ' ' + Number(num2) + ' ' + operator;
+                    num1 = displayField.value;                                              // This takes the result as the new num1
+                    num2 = 0;                                                               // This resets num2, so we can listen for a new one.         
                     displayField.value = '';                                                // Reseting the display when users presses an operator
                     dotButton.addEventListener('click', getInputs);                         // Reseting - enabling the dot button for the num2 (next step)
                 };
@@ -73,6 +76,7 @@ function getInputs (e) {
                 if (e.target.classList.contains('number')) {                         // SUBCASE 1: user presses a number after the result is printed
                     document.querySelector('input').value = ''; 
                     document.querySelector('input').value = e.target.textContent;
+                    history.textContent = '';
                     num1 = e.target.textContent; 
                     resultSwitch = false;                                             // Quits the result case and enables the CASE 1
                     
@@ -88,6 +92,9 @@ function getInputs (e) {
                     num2Switch = true;
                     resultSwitch = false;                                             // Quits the result case and enables the CASE 1
                     document.querySelector('input').value = '';                       // Reseting the display when users presses an operator
+                    history.textContent = 
+                      history.textContent.substr(0, (history.textContent.length - 1)) 
+                        + ' ' + operator;
                     dotButton.addEventListener('click', getInputs);                   // Enabling the dot button for the next step
                 };
     };
@@ -190,6 +197,7 @@ document.querySelector('#button-equals').addEventListener('click', () => {
     if (displayField.value == Infinity || displayField.value == 'NaN' || displayField.value == 'undefine'){  // Display 'error' when value is invalid
         displayField.value = 'error';                           
     };
+    history.textContent += ' ' + Number(num2) + ' ' + '=';
     num1Switch = true;                                          // This resets the Eventlistener and the calculator
     num2Switch = false;                                         // This stops listening for num2 when we press =
     resultSwitch = true;
@@ -220,6 +228,7 @@ document.querySelector('#button-back').addEventListener('click', () => {
 
 document.querySelector('#button-c').addEventListener('click', () => {
     displayField.value = '';
+    history.textContent = '';
     num1 = 0;
     num2 = 0;
     operator = '';
