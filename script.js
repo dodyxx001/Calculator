@@ -93,19 +93,51 @@ function getInputs (e) {
     };
 };
 
-// Adding the main function above to all buttons. This is done here below, so we can use NAMED function.
-// We need a named function to be able to remove the event listener when needed (dot button).
-
-allButtons.forEach((btn) => {
-    btn.addEventListener('click', getInputs);
-    btn.classList.add('pressedkey');  // Add styling
-        this.setTimeout(function() {
-            btn.classList.remove('pressedkey')}, 100);
-});
-
 // end of main function
 //___________________________________________________________________________________________________________________________________________________________________________________________________
 
+
+// Function that adds styling on click / touch on the buttons for 0,1s
+
+let addStyle = (btn) => {
+    btn.target.classList.add('pressedkey');           // Add styling
+    this.setTimeout(function() {           // Remove styling
+        btn.target.classList.remove('pressedkey')}, 100);
+};
+
+
+// Functions that add and remove styling on mouse hovering over elements
+
+let addHoverStyle = (btn) => {
+    btn.target.classList.add('pressedkey');
+};
+
+let removeHoverStyle = (btn) => {
+    btn.target.classList.remove('pressedkey');
+};
+
+
+// Function that limits the display length to 8 characters, so that numbers
+// do not overflow the display
+
+let limitDisplay = () => {
+    if (displayField.value.length > 8) {
+        displayField.value = displayField.value.substr(0, 8)
+    };
+};
+
+
+// Adding the FUNCTIONS above to all buttons. This is done using named functions.
+// We need a named function to be able to remove the event listener when needed (dot button).
+
+allButtons.forEach((btn) => {
+
+    btn.addEventListener('click', getInputs);  // Call main function
+    btn.addEventListener('click', limitDisplay);
+    btn.addEventListener('click', addStyle);  // Call styling function
+    btn.addEventListener('mouseenter', addHoverStyle);  // Hovering function
+    btn.addEventListener('mouseleave', removeHoverStyle);
+});
 
 
 // Operation functions, changing all inputs to numbers
@@ -145,7 +177,6 @@ let operate = (num1, num2, operator) => {
         return divide(num1, num2);   
     };
 };
-
 
 
 // Adding functionality to button 'equals'

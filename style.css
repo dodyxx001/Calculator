@@ -2,7 +2,7 @@
     box-sizing: border-box;
     background: rgb(212, 212, 212);
     font-family: sans-serif;
-    /* border: 1px solid black; */
+    border: 1px solid black;
 }
 
 
@@ -107,8 +107,6 @@ body {
 /* Hover over and tap all buttons styling */
 
 .button:hover {
-    background-color: rgb(144, 143, 184);
-    transform: scale(1.1);
     cursor: pointer;
 }
 
