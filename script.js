@@ -197,12 +197,20 @@ document.querySelector('#button-equals').addEventListener('click', () => {
     if (displayField.value == Infinity || displayField.value == 'NaN' || displayField.value == 'undefine'){  // Display 'error' when value is invalid
         displayField.value = 'error';                           
     };
-    history.textContent += ' ' + Number(num2) + ' ' + '=';
+
+    if(num2){                                                   // Showing the calculation history
+        history.textContent += ' ' + Number(num2) + ' ' + '=';
+    };     
+
+    if (displayField.value == 'error'){                         // If we get an error, delete calc.history
+        history.textContent = '';                           
+    };
     num1Switch = true;                                          // This resets the Eventlistener and the calculator
     num2Switch = false;                                         // This stops listening for num2 when we press =
     resultSwitch = true;
     num1 = displayField.value;                                  // This sets the result as the new num1.
     num2 = 0;                                                   // This resets the num 2, so we can listen for a new num2.
+    
     if (Number(displayField.value) % 1 === 0) {                                                
         dotButton.addEventListener('click', getInputs);         // This enables the dot button for the  new num2
     }else {
