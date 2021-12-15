@@ -37,7 +37,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    margin-bottom: 15px;
 }
 
 #display-upper {
@@ -154,12 +154,43 @@ body {
         flex-direction: column;
         border: 4px solid rgb(69, 110, 121);
         border-radius: 20px;
+        margin-top: 2rem;
     }
 
-    #display-field{
-        width: 95%;
-        height: 90%;
+    #display{
+        height: 35%;  
+        background-color: rgb(167, 166, 194);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+    }
+    
+    #display-upper {
+        width: 100%;
+        height: 30%;
+        min-height: 2rem;
+        display: flex;
+        text-align: right;
+        justify-content: right;
+        font-size: 20px;
+        font-weight: 100;
         padding-right: 10px;
+        padding-top: 5px;
+        background-color: rgb(201, 201, 201);
+        border-top: 2px solid rgb(109, 112, 161);
+        border-left: 2px solid rgb(109, 112, 161);
+        border-right: 2px solid rgb(109, 112, 161);
+        border-bottom: none;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    #display-field{
+        width: 100%;
+        height: 70%;
+        padding-right: 10px;
+        padding-top: 0px;
         font-weight: 100;
         font-size: 50px;
         background-color: rgb(201, 201, 201);
@@ -167,8 +198,11 @@ body {
         justify-content: right;
         text-align: right;
         align-items: flex-end;
-        border: 2px solid rgb(109, 112, 161);
-        border-radius: 20px;
+        border-bottom: 2px solid rgb(109, 112, 161);
+        border-left: 2px solid rgb(109, 112, 161);
+        border-right: 2px solid rgb(109, 112, 161);
+        border-top: none;
+        border-radius: 0 0 15px 15px;
     }
 
     #buttons {   
@@ -208,6 +242,11 @@ body {
         font-size: 30px;
         margin: 10px;
     }
+
+    .pressedkey{
+        background-color: rgb(144, 143, 184);
+        transform: scale(1.1);
+    }
 }
 
 /* Mobile phones smaller than 360 px (iphone, s5...) */
@@ -229,10 +268,40 @@ body {
         border-radius: 20px;
     }
 
-    #display-field{
-        width: 95%;
-        height: 90%;
+    #display{
+        height: 35%;  
+        background-color: rgb(167, 166, 194);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+    }
+    
+    #display-upper {
+        width: 100%;
+        height: 30%;
+        min-height: 2rem;
+        display: flex;
+        text-align: right;
+        justify-content: right;
+        font-size: 20px;
+        font-weight: 100;
         padding-right: 10px;
+        padding-top: 5px;
+        background-color: rgb(201, 201, 201);
+        border-top: 2px solid rgb(109, 112, 161);
+        border-left: 2px solid rgb(109, 112, 161);
+        border-right: 2px solid rgb(109, 112, 161);
+        border-bottom: none;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    #display-field{
+        width: 100%;
+        height: 70%;
+        padding-right: 10px;
+        padding-top: 0px;
         font-weight: 100;
         font-size: 50px;
         background-color: rgb(201, 201, 201);
@@ -240,8 +309,11 @@ body {
         justify-content: right;
         text-align: right;
         align-items: flex-end;
-        border: 2px solid rgb(109, 112, 161);
-        border-radius: 20px;
+        border-bottom: 2px solid rgb(109, 112, 161);
+        border-left: 2px solid rgb(109, 112, 161);
+        border-right: 2px solid rgb(109, 112, 161);
+        border-top: none;
+        border-radius: 0 0 15px 15px;
     }
 
     #buttons {   
@@ -280,5 +352,10 @@ body {
         height: 3rem;
         font-size: 30px;
         margin: 10px;
+    }
+
+    .pressedkey{
+        background-color: rgb(144, 143, 184);
+        transform: scale(1.1);
     }
 }
