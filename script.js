@@ -1,18 +1,21 @@
-let numberButtons = document.querySelectorAll('.number');
-let functionButtons = document.querySelectorAll('.function');
-let allButtons = document.querySelectorAll('.button');
-let dotButton = document.querySelector('#button-dot')
-let displayField = document.querySelector('input');
-let history = document.querySelector('#display-upper');
+const numberButtons = document.querySelectorAll('.number');
+const functionButtons = document.querySelectorAll('.function');
+const allButtons = document.querySelectorAll('.button');
+const dotButton = document.querySelector('#button-dot')
+const minusButton = document.querySelector('#button-subtract');
+const displayField = document.querySelector('input');
+const history = document.querySelector('#display-upper');
 
 
-let num1 = 0;
-let num2 = 0;
+let num1 = '';
+let num2 = '';
 let operator = '';
 
 let num1Switch = true;
 let num2Switch = false;
 let resultSwitch = false;
+
+let resultValueToPrintInHistory = 0;
 
 // Main function which collects number 1, number 2 and operator.
 // It uses the switches, which turn on and off, depending on
@@ -26,51 +29,70 @@ function getInputs (e) {
         num2Switch === false &&
         resultSwitch === false) {
 
-        if (e.target.classList.contains('number')) {                                // SUBCASE 1: when the user presses a number:
-            num1 += e.target.textContent;                                           // getting the num1 (first number)
-            document.querySelector('input').value += e.target.textContent;          // printing the num1 in the display  
-
-        } else if (e.target.classList.contains('dot')) {                             // SUBCASE 2: when the user presses the dot:
-            num1 += e.target.textContent;
-            document.querySelector('input').value += e.target.textContent;
-            dotButton.removeEventListener('click', getInputs);                      // Disabling the dot button, if we aldready have a decimal dot
+        if (!num1 && e.target.classList.contains('subtract')){                          // If we want to enter a negative number and press (-) button first:
+            num1 += e.target.textContent;                                               // Start num1 with a (-)
+            document.querySelector('input').value += e.target.textContent;              // Print - to display
+            minusButton.removeEventListener('click', getInputs);                        // Temporarily disable the - button, so we cannot type multiple -
         
+        }else{
 
-        } else if (e.target.classList.contains('function')) {                       // SUBCASE 3: when the user presses an operator:
-            operator = e.target.textContent;
-            num1Switch = false;
-            num2Switch = true;
-            document.querySelector('input').value = '';                             // Reseting the display when users presses an operator
-            history.textContent = Number(num1) + ' ' + operator;
-            dotButton.addEventListener('click', getInputs);                         // Enabling the dot button for the num2 (next step)
-        };  
+            if (e.target.classList.contains('number')) {                                // SUBCASE 1: when the user presses a number:
+                num1 += e.target.textContent;                                           // getting the num1 (first number)
+                document.querySelector('input').value += e.target.textContent;          // printing the num1 in the display  
+                minusButton.addEventListener('click', getInputs);                       // Negative numbers: enable - button when entering a digit, if it was disabled before
 
-    } else if (num1Switch === false &&                                                      // CASE 2: getting the num 2 
+            } else if (e.target.classList.contains('dot')) {                            // SUBCASE 2: when the user presses the dot:
+                num1 += e.target.textContent;
+                document.querySelector('input').value += e.target.textContent;
+                dotButton.removeEventListener('click', getInputs);                      // Disabling the dot button, if we aldready have a decimal dot
+            
+
+            } else if (e.target.classList.contains('function')) {                       // SUBCASE 3: when the user presses an operator:
+                operator = e.target.textContent;
+                num1Switch = false;
+                num2Switch = true;
+                document.querySelector('input').value = '';                             // Reseting the display when users presses an operator
+                history.textContent = Number(num1) + ' ' + operator;
+                dotButton.addEventListener('click', getInputs);                         // Enabling the dot button for the num2 (next step)
+            };  
+        };
+
+    } else if (num1Switch === false &&                                                          // CASE 2: getting the num 2 
                 num2Switch === true) {
-                    
-                if (e.target.classList.contains('number')) {                                // SUBCASE 1: if a user presses a number:
-                    
-                    num2 += e.target.textContent;                                           // getting the num2 (second number)
-                    document.querySelector('input').value += e.target.textContent;          // printing the num2 in the display  
+                
+                if (!num2 && e.target.classList.contains('subtract')){                          // If we want to enter a negative number and press (-) button first:
+                    num2 += e.target.textContent;                                               // Start num2 with a (-)
+                    document.querySelector('input').value += e.target.textContent;              // Print - to display
+                    minusButton.removeEventListener('click', getInputs);                        // Temporarily disable the - button, so we cannot type multiple -
+                
+                }else{
 
-                } else if (e.target.classList.contains('dot')) {                            // SUBCASE 2: if the user presses the dot:
-                    num2 += e.target.textContent;
-                    document.querySelector('input').value += e.target.textContent;
-                    dotButton.removeEventListener('click', getInputs);                      // Disabling the dot button, if we aldready have a decimal dot
+                    if (e.target.classList.contains('number')) {                                // SUBCASE 1: if a user presses a number:
+                        
+                        num2 += e.target.textContent;                                           // getting the num2 (second number)
+                        document.querySelector('input').value += e.target.textContent;          // printing the num2 in the display  
+                        minusButton.addEventListener('click', getInputs);                       // Negative numbers: enable - button when entering a digit, if it was disabled before
 
-                } else if (e.target.classList.contains('function')) {                       // SUBCASE 3: if a user presses an operator again:
 
-                    operate(num1, num2, operator);                                          // Calling the function, so we get the result
-                    displayField.value = operate(num1, num2, operator);                     // Displaying the result
-                    operator = e.target.textContent;
-                    history.textContent += ' ' + Number(num2) + ' ' + operator;
-                    num1 = displayField.value;                                              // This takes the result as the new num1
-                    num2 = 0;                                                               // This resets num2, so we can listen for a new one.         
-                    displayField.value = '';                                                // Reseting the display when users presses an operator
-                    dotButton.addEventListener('click', getInputs);                         // Reseting - enabling the dot button for the num2 (next step)
+                    } else if (e.target.classList.contains('dot')) {                            // SUBCASE 2: if the user presses the dot:
+                        num2 += e.target.textContent;
+                        document.querySelector('input').value += e.target.textContent;
+                        dotButton.removeEventListener('click', getInputs);                      // Disabling the dot button, if we aldready have a decimal dot
+
+                    } else if (e.target.classList.contains('function')) {                       // SUBCASE 3: if a user presses an operator again:
+
+                        operate(num1, num2, operator);                                          // Calling the function, so we get the result
+                        displayField.value = operate(num1, num2, operator);                     // Displaying the result
+                        operator = e.target.textContent;                                        // Getting the operator
+                        history.textContent += ' ' + Number(num2) + ' ' + operator;             // Printing to history display
+                        num1 = displayField.value;                                              // This takes the result as the new num1
+                        num2 = '';                                                              // This resets num2, so we can listen for a new one.         
+                        displayField.value = '';                                                // Reseting the display when users presses an operator
+                        dotButton.addEventListener('click', getInputs);                         // Reseting - enabling the dot button for the num2 (next step)
+                    };
                 };
 
-} else if (num1Switch === true &&                                                        // CASE 3: when result is printed after pressing "=", restart the calculator if the user presses a number
+} else if (num1Switch === true &&                                                    // CASE 3: when result is printed after pressing "=", restart the calculator if the user presses a number
             num2Switch === false &&
             resultSwitch === true) {  
                 if (e.target.classList.contains('number')) {                         // SUBCASE 1: user presses a number after the result is printed
@@ -93,8 +115,9 @@ function getInputs (e) {
                     resultSwitch = false;                                             // Quits the result case and enables the CASE 1
                     document.querySelector('input').value = '';                       // Reseting the display when users presses an operator
                     history.textContent = 
-                      history.textContent.substr(0, (history.textContent.length - 1)) 
-                        + ' ' + operator;
+                    //   history.textContent.substr(0, (history.textContent.length - 1)) 
+                    //     + ' ' + operator;
+                        resultValueToPrintInHistory + ' ' + operator;
                     dotButton.addEventListener('click', getInputs);                   // Enabling the dot button for the next step
                 };
     };
@@ -124,12 +147,12 @@ let removeHoverStyle = (btn) => {
 };
 
 
-// Function that limits the display length to 8 characters, so that numbers
+// Function that limits the display length to 9 characters, so that numbers
 // do not overflow the display
 
 let limitDisplay = () => {
-    if (displayField.value.length > 8) {
-        displayField.value = displayField.value.substr(0, 8)
+    if (displayField.value.length > 7) {
+        displayField.value = displayField.value.substr(0, 9)
     };
 };
 
@@ -140,10 +163,11 @@ let limitDisplay = () => {
 allButtons.forEach((btn) => {
 
     btn.addEventListener('click', getInputs);  // Call main function
-    btn.addEventListener('click', limitDisplay);
+    btn.addEventListener('click', limitDisplay);  // Limiting display length
     btn.addEventListener('click', addStyle);  // Call styling function
     btn.addEventListener('mouseenter', addHoverStyle);  // Hovering function
     btn.addEventListener('mouseleave', removeHoverStyle);
+
 });
 
 
@@ -189,14 +213,22 @@ let operate = (num1, num2, operator) => {
 // Adding functionality to button 'equals'
 
 document.querySelector('#button-equals').addEventListener('click', () => {
-    operate(num1, num2, operator);                              // Calling the operate function
+
     displayField.value = operate(num1, num2, operator);         // Displaying the result
-    if (displayField.value.length > 6) {                        // Limiting the length of the result (for long decimals)
-        displayField.value = displayField.value.substr(0, 8)
+    
+    if (displayField.value.length > 7) {                        // Limiting the length of the result (for long decimals)
+        displayField.value = displayField.value.substr(0, 9)
     };
-    if (displayField.value == Infinity || displayField.value == 'NaN' || displayField.value == 'undefine'){  // Display 'error' when value is invalid
+    if (displayField.value == Infinity || displayField.value == 'NaN' || displayField.value == 'undefined'){  // Display 'error' when value is invalid
         displayField.value = 'error';                           
     };
+
+
+    const regex = new RegExp('\.');                              // If the result ends in zeroes after decimal dot, trim the zeroes
+    if (displayField.value[displayField.value.length - 1] === '0'
+         && (regex.test(displayField.value))) {
+            displayField.value = Number(displayField.value);
+        };
 
     if(num2){                                                   // Showing the calculation history
         history.textContent += ' ' + Number(num2) + ' ' + '=';
@@ -205,11 +237,15 @@ document.querySelector('#button-equals').addEventListener('click', () => {
     if (displayField.value == 'error'){                         // If we get an error, delete calc.history
         history.textContent = '';                           
     };
+    
+    resultValueToPrintInHistory = displayField.value;           // If after result we use an operator, this prints the result in history
+    
     num1Switch = true;                                          // This resets the Eventlistener and the calculator
     num2Switch = false;                                         // This stops listening for num2 when we press =
     resultSwitch = true;
+    
     num1 = displayField.value;                                  // This sets the result as the new num1.
-    num2 = 0;                                                   // This resets the num 2, so we can listen for a new num2.
+    num2 = '';                                                   // This resets the num 2, so we can listen for a new num2.
     
     if (Number(displayField.value) % 1 === 0) {                                                
         dotButton.addEventListener('click', getInputs);         // This enables the dot button for the  new num2
@@ -237,8 +273,8 @@ document.querySelector('#button-back').addEventListener('click', () => {
 document.querySelector('#button-c').addEventListener('click', () => {
     displayField.value = '';
     history.textContent = '';
-    num1 = 0;
-    num2 = 0;
+    num1 = '';
+    num2 = '';
     operator = '';
     num1Switch = true;
     num2Switch = false;
@@ -248,14 +284,17 @@ document.querySelector('#button-c').addEventListener('click', () => {
 
 
 
-// Adding keyboard support
-// Function that presses key:
+// Adding keyboard support:
+// Function that takes a button as argument and presses key:
+
 let pressKey = (element) => {
     document.getElementById(element).click();  // Clicks on element
-    document.getElementById(element).classList.add('pressedkey');  // Adds animation
+    document.getElementById(element).classList.add('pressedkey');  // Adds animation for 0,1s
     this.setTimeout(function() {document.getElementById(element).classList.remove('pressedkey')}, 100);
 }
 
+
+// Function that takes (e) from eventListener and maps keys to elements
 let keyFunction = (e) => {
 
     if (e.key === '1') { pressKey('button1'); };
@@ -274,12 +313,15 @@ let keyFunction = (e) => {
     if (e.key === 'Backspace') { pressKey('button-back'); };
     if (e.key === 'Delete') { pressKey('button-back'); };
     if (e.key === 'Escape') { pressKey('button-c'); };
+    if (e.key === 'c') { pressKey('button-c'); };
     if (e.key === '+') { pressKey('button-add'); };
     if (e.key === '-') { pressKey('button-subtract'); };
     if (e.key === '/') { pressKey('button-divise'); };
     if (e.key === '*') { pressKey('button-multiply'); };
 };
 
+
+// Eventlistener for the keyboard, calls the function above:
 document.addEventListener('keydown', (e) => {
     keyFunction(e);
 });

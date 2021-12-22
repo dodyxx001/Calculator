@@ -39,3 +39,16 @@ Version 5:
 - Added upper row in the display, to show the history of calculations
 - Corrected CSS for touch-screens animations
 - This version took about 2 hours to complete
+
+Version 6:
+- Added proper functionality for negative numbers
+- User can now type in (-) before num 1 or num 2
+- Added function to trim 0's if the decimal result ends with 0's 
+- Corrected history display, it now displays the result as num1 correctly
+- Edited keyboard support - cleaner code, cleaned repeating code
+  with writing a new function.
+- Added keyboard support for keys: c, =, delete.
+- Edited CSS for mobile, turned scale animation on touch to 1.5
+- This version took about 2 hours to complete
+
+
